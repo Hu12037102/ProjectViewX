@@ -1,11 +1,13 @@
 package io.google.projectview.weight
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -27,6 +29,10 @@ class ProjectView : ConstraintLayout {
             this,
             false
         )
+    }
+    private var mOnItemInfoClickListener: OnItemInfoClickListener? = null
+    fun setOnItemInfoClickListener(onItemInfoClickListener: OnItemInfoClickListener?) {
+        this.mOnItemInfoClickListener = onItemInfoClickListener
     }
 
     fun getLeftView(): TextView {
@@ -112,6 +118,8 @@ class ProjectView : ConstraintLayout {
         val leftTextColor =
             typedArray.getColor(R.styleable.ProjectView_pv_left_text_color, Color.BLACK)
         mViewBinding.atvLeft.setTextColor(leftTextColor)
+        val isFinish = typedArray.getBoolean(R.styleable.ProjectView_pv_left_click_finish, false)
+
         /******************************************center**********************************************************/
         val centerText = typedArray.getString(R.styleable.ProjectView_pv_center_text)
         mViewBinding.atvCenter.text = centerText
@@ -192,7 +200,18 @@ class ProjectView : ConstraintLayout {
         val rightTextColor =
             typedArray.getColor(R.styleable.ProjectView_pv_right_text_color, Color.BLACK)
         mViewBinding.atvRight.setTextColor(rightTextColor)
+
         typedArray.recycle()
+        mViewBinding.atvLeft.setOnClickListener {
+            mOnItemInfoClickListener?.clickLeftView(it)
+            if (isFinish && context is Activity) {
+                context.setResult(Activity.RESULT_OK)
+                context.finish()
+            }
+        }
+        mViewBinding.atvRight.setOnClickListener {
+            mOnItemInfoClickListener?.clickRightView(it)
+        }
     }
 
 
@@ -232,4 +251,8 @@ class ProjectView : ConstraintLayout {
         Utils.dp2px(context, Contract.DEFAULT_TITLE_HEIGHT_SIZE.toFloat())
 
     private fun getDefaultTextSize() = Utils.dp2px(context, 14f)
+    interface OnItemInfoClickListener {
+        fun clickLeftView(view: View)
+        fun clickRightView(view: View)
+    }
 }
