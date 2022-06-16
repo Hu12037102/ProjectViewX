@@ -7,6 +7,7 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import io.google.projectview.Contract
 import io.google.projectview.R
@@ -26,6 +27,18 @@ class ProjectView : ConstraintLayout {
             this,
             false
         )
+    }
+
+    fun getLeftView(): TextView {
+        return mViewBinding.atvLeft
+    }
+
+    fun getCenterView(): TextView {
+        return mViewBinding.atvCenter
+    }
+
+    fun getRightView(): TextView {
+        return mViewBinding.atvCenter
     }
 
     constructor(context: Context) : this(context, null) {}
@@ -114,7 +127,8 @@ class ProjectView : ConstraintLayout {
         val rightStartDrawable = typedArray.getDrawable(R.styleable.ProjectView_pv_right_start_src)
         val rightTopDrawable = typedArray.getDrawable(R.styleable.ProjectView_pv_right_top_src)
         val rightEndDrawable = typedArray.getDrawable(R.styleable.ProjectView_pv_right_end_src)
-        val rightBottomDrawable = typedArray.getDrawable(R.styleable.ProjectView_pv_right_bottom_src)
+        val rightBottomDrawable =
+            typedArray.getDrawable(R.styleable.ProjectView_pv_right_bottom_src)
         mViewBinding.atvRight.setCompoundDrawablesWithIntrinsicBounds(
             rightStartDrawable,
             rightTopDrawable,
