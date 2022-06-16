@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ProjectView">
+        <attr name="pv_left_start_src" format="reference" />
+        <attr name="pv_left_top_src" format="reference" />
+        <attr name="pv_left_end_src" format="reference" />
+        <attr name="pv_left_bottom_src" format="reference" />
+        <attr name="pv_left_margin_start" format="dimension" />
+        <attr name="pv_left_margin_top" format="dimension" />
+        <attr name="pv_left_margin_end" format="dimension" />
+        <attr name="pv_left_margin_bottom" format="dimension" />
+        <attr name="pv_left_padding_start" format="dimension" />
+        <attr name="pv_left_padding_top" format="dimension" />
+        <attr name="pv_left_padding_end" format="dimension" />
+        <attr name="pv_left_padding_bottom" format="dimension" />
+        <attr name="pv_left_drawable_padding" format="dimension" />
+        <attr name="pv_left_text" format="string" />
+        <attr name="pv_left_text_color" format="color" />
+        <attr name="pv_left_text_size" format="dimension" />
+        <attr name="pv_center_text" format="string" />
+        <attr name="pv_center_text_size" format="dimension" />
+        <attr name="pv_center_text_color" format="color" />
+        <attr name="pv_right_start_src" format="reference" />
+        <attr name="pv_right_top_src" format="reference" />
+        <attr name="pv_right_end_src" format="reference" />
+        <attr name="pv_right_bottom_src" format="reference" />
+        <attr name="pv_right_text" format="string" />
+        <attr name="pv_right_text_color" format="color" />
+        <attr name="pv_right_text_size" format="dimension" />
+        <attr name="pv_right_drawable_padding" format="dimension" />
+        <attr name="pv_right_margin_start" format="dimension" />
+        <attr name="pv_right_margin_top" format="dimension" />
+        <attr name="pv_right_margin_end" format="dimension" />
+        <attr name="pv_right_margin_bottom" format="dimension" />
+        <attr name="pv_right_padding_start" format="dimension" />
+        <attr name="pv_right_padding_top" format="dimension" />
+        <attr name="pv_right_padding_end" format="dimension" />
+        <attr name="pv_right_padding_bottom" format="dimension" />
+    </declare-styleable>
+</resources>
