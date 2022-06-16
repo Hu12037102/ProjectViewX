@@ -33,7 +33,6 @@ class ProjectView : ConstraintLayout {
 
 
         this.addView(mViewBinding.root)
-        mViewBinding.root.setBackgroundColor(Color.RED)
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ProjectView)
 
         /******************************************left**********************************************************/
