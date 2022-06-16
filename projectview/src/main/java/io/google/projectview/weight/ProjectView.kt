@@ -38,7 +38,7 @@ class ProjectView : ConstraintLayout {
     }
 
     fun getRightView(): TextView {
-        return mViewBinding.atvCenter
+        return mViewBinding.atvRight
     }
 
     constructor(context: Context) : this(context, null) {}
