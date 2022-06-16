@@ -8,7 +8,6 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import io.google.projectview.Contract
@@ -119,6 +118,8 @@ class ProjectView : ConstraintLayout {
             typedArray.getColor(R.styleable.ProjectView_pv_left_text_color, Color.BLACK)
         mViewBinding.atvLeft.setTextColor(leftTextColor)
         val isFinish = typedArray.getBoolean(R.styleable.ProjectView_pv_left_click_finish, false)
+        val isLeftCustomClickEnable =
+            typedArray.getBoolean(R.styleable.ProjectView_pv_left_custom_click_enable, false)
 
         /******************************************center**********************************************************/
         val centerText = typedArray.getString(R.styleable.ProjectView_pv_center_text)
@@ -200,17 +201,23 @@ class ProjectView : ConstraintLayout {
         val rightTextColor =
             typedArray.getColor(R.styleable.ProjectView_pv_right_text_color, Color.BLACK)
         mViewBinding.atvRight.setTextColor(rightTextColor)
+        val isRightCustomClickEnable =
+            typedArray.getBoolean(R.styleable.ProjectView_pv_right_custom_click_enable, false)
 
         typedArray.recycle()
-        mViewBinding.atvLeft.setOnClickListener {
-            mOnItemInfoClickListener?.clickLeftView(it)
-            if (isFinish && context is Activity) {
-                context.setResult(Activity.RESULT_OK)
-                context.finish()
+        if (isLeftCustomClickEnable) {
+            mViewBinding.atvLeft.setOnClickListener {
+                mOnItemInfoClickListener?.clickLeftView(it)
+                if (isFinish && context is Activity) {
+                    context.setResult(Activity.RESULT_OK)
+                    context.finish()
+                }
             }
         }
-        mViewBinding.atvRight.setOnClickListener {
-            mOnItemInfoClickListener?.clickRightView(it)
+        if (isRightCustomClickEnable) {
+            mViewBinding.atvRight.setOnClickListener {
+                mOnItemInfoClickListener?.clickRightView(it)
+            }
         }
     }
 
